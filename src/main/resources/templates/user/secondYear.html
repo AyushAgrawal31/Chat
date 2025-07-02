@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Chat</title>
+<link rel="stylesheet" href="/css/secondYear.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com">
+</head>
+<body>
+	<noscript>
+		<h2>Sorry! Your browser doesn't support Javascript</h2>
+	</noscript>
+	<header>
+		<h1 class="heading">
+			<a href="/user/" style="text-decoration: none; color: inherit;">Community
+				Chat</a>
+		</h1>
+		<div class="profile-icon" id="profileIcon">
+			<img
+				th:src="${user.profileImage} != null ? @{${user.profileImage}} : @{/user.png}"
+				alt="Profile Picture">
+
+		</div>
+	</header>
+
+	<div class="container">
+
+		<aside class="chat-list">
+
+			<a href="/user/first">
+				<div class="chat-icon" title="1st Year"
+					style="background-image: url('/1st.png');"></div>
+			</a> <a href="/user/second">
+				<div class="chat-icon" title="2nd Year"
+					style="background-image: url('/2nd.png');"></div>
+			</a> <a href="/user/third">
+				<div class="chat-icon" title="3rd Year"
+					style="background-image: url('/3rd.png');"></div>
+			</a> <a href="/user/fourth">
+				<div class="chat-icon" title="4th Year"
+					style="background-image: url('/4th.png');"></div>
+			</a>
+
+		</aside>
+
+		<div id="username-page" class="chat-section">
+			<div class="username-page-container">
+				<h1 class="title">Second Year</h1>
+				<div class="form-group" id="usernameForm">
+					<button type="submit" id="startChat" class="accent username-submit">Start
+						Chatting</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="chat-page" class="hidden chat-section">
+			<div class="chat-container">
+				<div class="chat-header">
+					<h2>Second Year</h2>
+				</div>
+				<div class="connecting">Connecting...</div>
+				<ul id="messageArea">
+
+				</ul>
+				<form id="messageForm" name="messageForm">
+					<div class="form-group" id="sendForm">
+						<div class="input-group clearfix">
+							<input type="text" id="message" placeholder="Type a message..."
+								autocomplete="off" class="form-control" />
+							<button type="submit" class="primary">Send</button>
+							<button id="exitChat" class="danger">Exit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<aside class="important-material">
+			<h2 style="margin-top: 0px;">Important Material</h2>
+			<ul style="list-style-type: none; padding-left: 0;">
+				<li><a href="https://drive.google.com/drive/folders/1GQOOeuotiB-ps5d-_cms8pdn4HEbHMOO?usp=share_link " target="_blank">Previous
+						Year Papers</a></li>
+				<li><a href="https://drive.google.com/drive/folders/1WlL83Sp40Mn3Y4B2eyIJURh8V0AGJWG-?usp=share_link" target="_blank">Notes</a></li>
+				<li><a href="https://drive.google.com/drive/folders/1kvINFLuD-Df4Ryhb2QCZi1YDlmruGjbX?usp=share_link " target="_blank">PPTs</a></li>
+			</ul>
+		</aside>
+	</div>
+
+	<div class="profile-popup" id="profilePopup">
+		<div class="popup-content">
+			<span class="close" id="closePopup">&times;</span>
+			<div class="profile-icon" id="profileIcon">
+				<img
+					th:src="${user.profileImage} != null ? @{${user.profileImage}} : @{/user.png}"
+					alt="Profile Picture">
+
+			</div>
+			<h2 id="fullName">[[${user.fullName}]]</h2>
+			<h3>[[${user.regNo}]]</h3>
+			<h3>[[${user.email}]]</h3>
+			<button class="edit-profile">Edit Profile</button>
+			<a href="/user/changePass"><button class="changePassword">Change
+					Password</button></a> <a href="/logout"><button class="logout">Log
+					Out</button></a>
+
+		</div>
+	</div>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script src="/js/secondYear.js"></script>
+</body>
+</html>

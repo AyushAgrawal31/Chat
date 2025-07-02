@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+<title>Chat</title>
+<link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com">
+</head>
+<body>
+	<noscript>
+		<h2>Sorry! Your browser doesn't support Javascript</h2>
+	</noscript>
+	<header>
+		<h1 class="heading">
+			<a href="/user/" style="text-decoration: none; color: inherit;">Community
+				Chat</a>
+		</h1>
+		<div class="profile-icon" id="profileIcon">
+			<img
+				th:src="${user.profileImage} != null ? @{${user.profileImage}} : @{/user.png}"
+				alt="Profile Picture">
+
+		</div>
+	</header>
+
+	<div class="container">
+
+		<aside class="chat-list">
+
+			<a href="/user/first">
+				<div class="chat-icon" title="1st Year"
+					style="background-image: url('/1st.png');"></div>
+			</a> <a href="/user/second">
+				<div class="chat-icon" title="2nd Year"
+					style="background-image: url('/2nd.png');"></div>
+			</a> <a href="/user/third">
+				<div class="chat-icon" title="3rd Year"
+					style="background-image: url('/3rd.png');"></div>
+			</a> <a href="/user/fourth">
+				<div class="chat-icon" title="4th Year"
+					style="background-image: url('/4th.png');"></div>
+			</a>
+
+		</aside>
+
+		<div id="username-page" class="chat-section">
+			<div class="username-page-container">
+				<h1 class="title">General Chat</h1>
+				<div class="form-group" id="usernameForm">
+					<button type="submit" id="startChat" class="accent username-submit">Start
+						Chatting</button>
+				</div>
+
+			</div>
+		</div>
+
+		<div id="chat-page" class="hidden chat-section">
+			<div class="chat-container">
+				<div class="chat-header">
+					<h2>General Chat</h2>
+				</div>
+				<div class="connecting">Connecting...</div>
+				<ul id="messageArea">
+
+				</ul>
+				<form id="messageForm" name="messageForm">
+					<div class="form-group" id="sendForm">
+						<div class="input-group clearfix">
+							<input type="text" id="message" placeholder="Type a message..."
+								autocomplete="off" class="form-control" />
+							<button type="submit" class="primary">Send</button>
+							<button id="exitChat" class="danger">Exit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<aside class="active-members">
+			<!-- <h2 style="margin-top: 0px;">Active Members</h2>
+			<div class="member">
+				<img src="/member.png" alt="Member 1"> <span>Member 1</span>
+			</div>
+			<div class="member">
+				<img src="/member.png" alt="Member 2"> <span>Member 2</span>
+			</div>
+			<div class="member">
+				<img src="/member.png" alt="Member 3"> <span>Member 3</span>
+			</div> -->
+		</aside>
+	</div>
+
+
+
+
+
+	<div class="profile-popup" id="profilePopup">
+		<div class="popup-content">
+			<span class="close" id="closePopup">&times;</span>
+			<div class="profile-icon" id="profileIcon">
+				<img
+					th:src="${user.profileImage} != null ? @{${user.profileImage}} : @{/user.png}"
+					alt="Profile Picture">
+
+			</div>
+
+
+			<h2 id="fullName">[[${user.fullName}]]</h2>
+			<h3>[[${user.regNo}]]</h3>
+			<h3>[[${user.email}]]</h3>
+			<a href="/user/photo">
+				<button class="edit-profile">Upload Profile</button>
+			</a> <a href="/user/changePass"><button class="changePassword">Change
+					Password</button></a> <a href="/logout"><button class="logout">Log
+					Out</button></a>
+
+		</div>
+	</div>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			const profileIcon = document.getElementById("profileIcon");
+			const profilePopup = document.getElementById("profilePopup");
+			const closePopup = document.getElementById("closePopup");
+
+			// Ensure elements exist before adding event listeners
+			if (profileIcon && profilePopup && closePopup) {
+				profileIcon.addEventListener("click", function(event) {
+					event.stopPropagation(); // Prevent immediate closing
+					profilePopup.style.display = "block";
+				});
+
+				closePopup.addEventListener("click", function() {
+					profilePopup.style.display = "none";
+				});
+
+				// Close popup when clicking outside it
+				window.addEventListener("click", function(event) {
+					if (!profilePopup.contains(event.target)
+							&& event.target !== profileIcon) {
+						profilePopup.style.display = "none";
+					}
+				});
+			} else {
+				console.error("Profile elements not found in the DOM.");
+			}
+		});
+	</script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.4/sockjs.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+	<script src="/js/home.js"></script>
+</body>
+</html>
