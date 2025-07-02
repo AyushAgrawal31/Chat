@@ -23,21 +23,17 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ayush.websocket.model.UserDtls;
 import com.ayush.websocket.repository.UserRepository;
-import com.ayush.websocket.service.UserService;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
-	
-	@Autowired
-    private UserService userService;
-	
+@RequestMapping("/user")
+public class UserController {
+
 	@Autowired
 	private UserRepository userRepo;
-	
+
 	@Autowired
 	private BCryptPasswordEncoder passwordEncode;
-	
+
 	@ModelAttribute
 	private void userDetails(Model m, Principal p) {
 		String email = p.getName();
@@ -45,56 +41,15 @@ public class AdminController {
 
 		m.addAttribute("user", user);
 	}
-	
+
 	@GetMapping("/")
 	public String home() {
-		return "admin/adminHome";
-	}
-	
-	@GetMapping("/logs")
-    public String Logs() {
-        return "admin/logs";
-    }
-	
-	@PostMapping("/block")
-    public ResponseEntity<String> blockUser(@RequestParam("regNo") int regNo) {
-        boolean result = userService.blockUser(regNo);
-        return result ?
-            ResponseEntity.ok("User blocked successfully") :
-            ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
-    }
-
-    @PostMapping("/unblock")
-    public ResponseEntity<String> unblockUser(@RequestParam("regNo") int regNo) {
-        boolean result = userService.unblockUser(regNo);
-        return result ?
-            ResponseEntity.ok("User unblocked successfully") :
-            ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
-    }
-    
-    @GetMapping("/first")
-	public String firstYearPage() {
-	    return "admin/firstYear";
+		return "user/home";
 	}
 
-	@GetMapping("/second")
-	public String secondYearPage() {
-	    return "admin/secondYear";
-	}
-
-	@GetMapping("/third")
-	public String thirdYearPage() {
-	    return "admin/thirdYear";
-	}
-
-	@GetMapping("/fourth")
-	public String fourthYearPage() {
-	    return "admin/fourthYear";
-	}
-	
 	@GetMapping("/changePass")
 	public String loadChangePassword() {
-		return "admin/changePassword";
+		return "user/changePassword";
 	}
 
 	@PostMapping("/updatePass")
@@ -119,7 +74,28 @@ public class AdminController {
 		} else {
 			session.setAttribute("msg", "Old password is wrong");
 		}
-		return "redirect:/admin/changePass";
+		return "redirect:/user/changePass";
+	}
+
+	
+	@GetMapping("/first")
+	public String firstYearPage() {
+	    return "user/firstYear";
+	}
+
+	@GetMapping("/second")
+	public String secondYearPage() {
+	    return "user/secondYear";
+	}
+
+	@GetMapping("/third")
+	public String thirdYearPage() {
+	    return "user/thirdYear";
+	}
+
+	@GetMapping("/fourth")
+	public String fourthYearPage() {
+	    return "user/fourthYear";
 	}
 	
 	@PostMapping("/upload-profile-photo")
@@ -157,6 +133,6 @@ public class AdminController {
 	    UserDtls user = userRepo.findByEmail(email);
 
 	    model.addAttribute("user", user);
-	    return "admin/uploadPhoto"; 
+	    return "user/uploadPhoto"; 
 	}
 }

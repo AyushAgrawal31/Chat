@@ -26,8 +26,8 @@ import com.ayush.websocket.repository.UserRepository;
 import com.ayush.websocket.service.UserService;
 
 @Controller
-@RequestMapping("/admin")
-public class AdminController {
+@RequestMapping("/teacher")
+public class TeacherController {
 	
 	@Autowired
     private UserService userService;
@@ -48,12 +48,12 @@ public class AdminController {
 	
 	@GetMapping("/")
 	public String home() {
-		return "admin/adminHome";
+		return "teacher/teacherHome";
 	}
 	
 	@GetMapping("/logs")
     public String Logs() {
-        return "admin/logs";
+        return "teacher/logs";
     }
 	
 	@PostMapping("/block")
@@ -74,29 +74,29 @@ public class AdminController {
     
     @GetMapping("/first")
 	public String firstYearPage() {
-	    return "admin/firstYear";
+	    return "teacher/firstYear";
 	}
 
 	@GetMapping("/second")
 	public String secondYearPage() {
-	    return "admin/secondYear";
+	    return "teacher/secondYear";
 	}
 
 	@GetMapping("/third")
 	public String thirdYearPage() {
-	    return "admin/thirdYear";
+	    return "teacher/thirdYear";
 	}
 
 	@GetMapping("/fourth")
 	public String fourthYearPage() {
-	    return "admin/fourthYear";
+	    return "teacher/fourthYear";
 	}
 	
 	@GetMapping("/changePass")
 	public String loadChangePassword() {
 		return "admin/changePassword";
 	}
-
+	
 	@PostMapping("/updatePass")
 	public String changePassword(Principal p, @RequestParam("oldPass") String oldPass,
 			@RequestParam("newPass") String newPass, HttpSession session) {
@@ -119,7 +119,7 @@ public class AdminController {
 		} else {
 			session.setAttribute("msg", "Old password is wrong");
 		}
-		return "redirect:/admin/changePass";
+		return "redirect:/teacher/changePass";
 	}
 	
 	@PostMapping("/upload-profile-photo")
@@ -157,6 +157,6 @@ public class AdminController {
 	    UserDtls user = userRepo.findByEmail(email);
 
 	    model.addAttribute("user", user);
-	    return "admin/uploadPhoto"; 
+	    return "teacher/uploadPhoto"; 
 	}
 }
