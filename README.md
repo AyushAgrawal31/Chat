@@ -1,6 +1,8 @@
 # College Community Chat Application 🎓
 
-A real-time web-based chat application designed for college communities with role-based access control and year-wise chat rooms.
+A real-time web-based chat application designed for college communities with role-based access control and year-wise chat rooms. 
+This Project was made with my friend where he worked on the Front End of the Application whereas I worked on the Backend Spring Configuration.
+Therefore the Frontend is very old and not much great but i hope the backend helps!
 
 ### Key Features ✨ 
 
