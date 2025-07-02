@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Registration Page</title>
+<link rel="stylesheet" type="text/css" href="/css/uploadPhoto.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com">
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<h1>Update Photo</h1>
+			<form action="/admin/upload-profile-photo" id="uploadForm" enctype="multipart/form-data" method="POST">
+				<input type="number" name="regNo" id="uploadRegNo"
+					placeholder="Enter RegNo" /> <input type="file" name="image"
+					id="uploadImage" />
+				<button type="submit">Upload</button>
+			</form>
+		</div>
+	</div>
+	<script src="/js/uploadPhoto.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Logs</title>
+  <link rel="stylesheet" href="/css/logs.css" />
+</head>
+<body>
+  <header>
+    <h1 class="heading">
+      <a href="/user/">Community Chat</a>
+    </h1>
+  </header>
+
+  <main>
+    <h2>🗂️ Login & Logout Logs</h2>
+    
+    <div style="margin-bottom: 20px;" class="filter-container">
+    <label for="emailFilter" class="filter-label">🔍 Filter by Email:</label>
+    <input type="text" id="emailFilter" class="filter-input" placeholder="Enter email..." />
+    <button id="searchButton" class="filter-button" onclick="filterLogs()">Search</button>
+  </div>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Email</th>
+          <th>Login Time</th>
+          <th>Log-out Time</th>
+        </tr>
+      </thead>
+      <tbody id="logTableBody">
+        <tr>
+          <td>Ayush Agrawal</td>
+          <td>ayushagrawal9630@gmail.com</td>
+          <td>2025-04-09 10:30 AM</td>
+          <td>2025-04-19 10:30 AM</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <script src="/js/logs.js"></script>
+</body>
+</html>
