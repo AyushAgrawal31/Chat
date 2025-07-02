@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Login Page</title>
+<link rel="stylesheet" type="text/css" href="css/login.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com">
+</head>
+<body>
+	<div class="container">
+
+
+		<div class="illustration">
+			<img src="illustration.png" alt="Illustration">
+		</div>
+
+
+		<div class="row">
+			<h1 class="card-header">Sign In</h1>
+			<p>Welcome to the community chat for the students of Manipal
+				University Jaipur.</p>
+				
+				<th:block th:if="${session.msg}">
+			<p>[[${session.msg}]]</p>
+			</th:block>
+
+			<div th:if="${param.error}" class="invalid-cred">
+			[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</div>
+			<div th:if="${param.logout}" class="logout-success">Logout
+				successfully</div>
+
+
+
+			<form action="/login" method="post">
+
+				<div class="input-group">
+					<input type="email" name="username" class="form-control"
+						placeholder="Email">
+				</div>
+
+				<div class="input-group">
+					<input type="password" id="password" name="password" class="form-control"
+						placeholder="Password" required> <span class="eye-icon"
+						id="togglePassword" onclick="togglePasswordVisibility()">
+						👁️ </span>
+				</div>
+
+				<div class="options">
+					<label> <input type="checkbox" name="remember">
+						Remember me
+					</label> <a href="loadForgotPass" class="forgot-password">Forgot Password</a>
+				</div>
+
+				<button type="submit" class="login-btn">Login</button>
+			</form>
+
+			<div class="signup-option">
+				<p>
+					New user? <a href="register">Sign up.</a>
+				</p>
+			</div>
+
+		</div>
+	</div>
+<script src="/js/login.js"></script>
+</body>
+</html>
