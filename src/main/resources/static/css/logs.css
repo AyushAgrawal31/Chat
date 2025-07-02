@@ -1,0 +1,100 @@
+body {
+	background-color: #2a2a2a;
+	color: #fff;
+	font-family: 'Poppins', sans-serif;
+}
+
+header {
+	background-color: #333;
+	padding: 10px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.heading a {
+	color: white;
+	text-decoration: none;
+	font-size: 28px;
+}
+
+main {
+	padding: 20px;
+}
+
+/* Wrapper container */
+.filter-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;  /* Space between input and button */
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+.filter-label {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Input box styling */
+.filter-input {
+  padding: 8px 15px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  width: 250px;
+}
+
+/* Input focus state */
+.filter-input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Button styling */
+.filter-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.filter-button:hover {
+  background-color: #0056b3;
+}
+
+
+h2 {
+	margin-bottom: 20px;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
+	font-size: 16px;
+}
+
+th, td {
+	padding: 12px;
+	text-align: left;
+}
+
+thead tr {
+	background-color: #444;
+}
+
+tbody tr {
+	border-bottom: 1px solid #333;
+}
+
+a {
+	color: #6db33f;
+}
